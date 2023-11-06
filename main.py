@@ -1,11 +1,18 @@
-class User:
+from question_model import Question
+from data import question_data
+from quiz_brain import QuizBrain
 
-    def __init__(self, user_id, user_name):
-        self.id = user_id
-        self.user_name = user_name
-        self.followers = 0
+question_bank = []  # Create a list to store the Question instances
+
+for question in question_data:
+    text = question['text']
+    answer = question['answer']
+    the_question = Question(text, answer)  # Create a Question instance
+    question_bank.append(the_question)  # Append the instance to the list
 
 
-user_1 = User("001", "Hassan")
+quiz = QuizBrain(question_bank)
 
-print(user_1.followers)
+while quiz.is_still_has_question():
+
+    quiz.next_question()
