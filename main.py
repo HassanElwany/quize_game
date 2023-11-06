@@ -16,3 +16,5 @@ quiz = QuizBrain(question_bank)
 while quiz.is_still_has_question():
 
     quiz.next_question()
+print("You've completed the quiz")
+print(f"your score: {quiz.user_score}")
